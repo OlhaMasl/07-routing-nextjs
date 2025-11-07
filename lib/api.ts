@@ -22,11 +22,12 @@ const headers = {
   };
 
 
-export const fetchNotes = async (query: string, page: number,): Promise<FetchNotesResponse> => {
+export const fetchNotes = async (query: string, page: number, tag?:string): Promise<FetchNotesResponse> => {
   const response = await axios.get<FetchNotesResponse>('https://notehub-public.goit.study/api/notes', {
     headers: headers,
     params: {
       search: query,
+      tag,
       page,
       perPage: 10
     }

@@ -8,7 +8,7 @@ interface ModalProps {
 };
 
 const Modal = ({ onClose, children }: ModalProps) => {
-
+  
      const handleBackdropClick = (event: React.MouseEvent<HTMLDivElement>) => {
     if (event.target === event.currentTarget) {
       onClose();
@@ -31,18 +31,18 @@ const Modal = ({ onClose, children }: ModalProps) => {
 	  };
 	}, [onClose]);
 
-    return createPortal(
-        <div
-            className={css.backdrop}
-            onClick={handleBackdropClick}
-            role="dialog"
-            aria-modal="true"
-        >
-            <div className={css.modal}>
-                {children}
-            </div>
-        </div>, document.body
-    )
+  return createPortal(
+    <div
+      className={css.backdrop}
+      onClick={handleBackdropClick}
+      role="dialog"
+      aria-modal="true"
+    >
+      <div className={css.modal}>
+        {children}
+      </div>
+    </div>, document.body
+  );
 };
 
 export default Modal
